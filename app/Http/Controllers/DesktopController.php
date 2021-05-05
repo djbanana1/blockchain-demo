@@ -3,19 +3,42 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\ImmutableMessage;
 
 class DesktopController extends Controller
 {
     /**
+     * @param Request $request
+     * @return Redirector
+     */
+    public function store(Request $request)
+    {
+        $message = $request->all()['message'];
+        $model = new ImmutableMessage();
+        $model->message = $message;
+        $model->save();
+        return redirect('/blockchain');
+    }
+
+
+
+    /**
+     * @return Redirector
+     */
+    public function checkData()
+    {
+        print_r(ImmutableMessage::validateData());exit();
+        return redirect('/blockchain');
+    }
+
+
+
+    /**
      * @param DesktopRequest $request
      * @return Redirector
      */
-    public function index(DesktopRequest $request)
+    public function view()
     {
-        print_r('asdf');exit();
-        $message = new Message();
-        $message->message = $request->message;
-        $message->save();
-        return redirect(route('desktop.index'))->withSuccess(__('form.successfully-stored'));
+        return view('welcome');
     }
 }

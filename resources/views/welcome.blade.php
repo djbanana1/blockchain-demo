@@ -21,11 +21,12 @@
         </style>
     </head>
     <body class="antialiased">
-    <form action="{{route('blockchain')}}" method="POST">
+    <form action="{{route('blockchain.store')}}" method="POST">
+    @csrf
         <div class="form-group">
             <div class="col-sm-4">
                 <label for="name">{{__('message')}}:</label>
-                <input class="form-control" type="text" name="name" id="name" value="">
+                <input class="form-control" type="text" name="message" id="name" value="">
             </div>
         </div>
         <div class="form-group">
