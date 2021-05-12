@@ -21,6 +21,7 @@
                 font-family: 'Nunito', sans-serif;
             }
         </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
     <body class="desktop-body">
       <div class="background-img"></div>
@@ -31,7 +32,7 @@
           <div class="close" onclick="closeWindow('terminal')">x</div>
         </div>
         <div class="terminal-body">
-          <form action="{{route('blockchain.store')}}" method="POST" autocomplete="off">
+          <form action="{{route('blockchain.store')}}" method="POST" autocomplete="off" id="terminal">
           @csrf
               <div class="form-group">
                   <div class="">
@@ -54,9 +55,7 @@
           <div class="close" onclick="closeWindow('txt')">x</div>
         </div>
         <div class="txt-body">
-          <p>asdfasfasfdasfasfasfasfa</p>
-          <p>asdfasfasfdasfasfasfasfa</p>
-          <p>asdfasfasfdasfasfasfasfa</p>
+          {!! $messages !!}
         </div>
       </div>
 
@@ -134,4 +133,5 @@ dragElement(document.getElementById("txt"));
     element.classList.remove("transparent");
     element.classList.add("show");
   }
+
 </script>

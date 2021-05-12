@@ -22,8 +22,3 @@ Route::post('/blockchain', [App\Http\Controllers\DesktopController::class, 'stor
 
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ImmutableMessage;
+use Illuminate\Support\Facades\DB;
 
 class DesktopController extends Controller
 {
@@ -13,7 +14,7 @@ class DesktopController extends Controller
      */
     public function store(Request $request)
     {
-        $message = $request->all()['message'];
+        $message = $request->all()['name'];
         $model = new ImmutableMessage();
         $model->message = $message;
         $model->save();
@@ -39,6 +40,11 @@ class DesktopController extends Controller
      */
     public function view()
     {
-        return view('welcome');
+        $messages = DB::table('log')->get();
+        $file_content = '';
+        foreach ($messages as $message) {
+            $file_content .= '<p>'.$message->message.'</p>';
+        }
+        return view('welcome', ['messages' => $file_content]);
     }
 }
