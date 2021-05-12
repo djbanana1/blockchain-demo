@@ -43,6 +43,7 @@
     left: 0;
     width: 16px;
     height: 16px;
+    margin-left: 6px;
     border-radius: 50%;
     background-color: red;
     transform: translate(0, -50%);
