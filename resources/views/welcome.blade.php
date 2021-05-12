@@ -82,6 +82,32 @@
 dragElement(document.getElementById("terminal"));
 dragElement(document.getElementById("txt"));
 
+$( document ).ready(function() {
+    if(sessionStorage.getItem('terminal') !== null) {
+        let element = document.getElementById('terminal');
+        if(sessionStorage.getItem('terminal') == 'show') {
+            element.classList.remove("transparent");
+            element.classList.add("show");
+        }
+        else {
+            element.classList.remove("show");
+            element.classList.add("transparent");
+        }
+    }
+
+    if(sessionStorage.getItem('txt') !== null) {
+        let element = document.getElementById('txt');
+        if(sessionStorage.getItem('txt') == 'show') {
+            element.classList.remove("transparent");
+            element.classList.add("show");
+        }
+        else {
+            element.classList.remove("show");
+            element.classList.add("transparent");
+        }
+    }
+});
+
   function dragElement(elmnt) {
     var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
     if (document.getElementById(elmnt.id + "Header")) {
@@ -127,12 +153,14 @@ dragElement(document.getElementById("txt"));
     let element = document.getElementById(elementId);
     element.classList.remove("show");
     element.classList.add("transparent");
+    sessionStorage.setItem(elementId, 'hide');
   }
 
   function openWindow(elementId) {
     let element = document.getElementById(elementId);
     element.classList.remove("transparent");
     element.classList.add("show");
+    sessionStorage.setItem(elementId, 'show');
   }
 
   $('#terminalBody').click(function() {
