@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class ImmutableMessage extends ChainedImmutableModel
 {
-    use HasFactory;
+    protected $table = 'log';
 }

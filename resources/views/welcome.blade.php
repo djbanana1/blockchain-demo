@@ -31,7 +31,8 @@
           <div class="close" onclick="closeWindow('terminal')">x</div>
         </div>
         <div class="terminal-body">
-          <form action="{{route('blockchain')}}" method="POST" autocomplete="off">
+          <form action="{{route('blockchain.store')}}" method="POST" autocomplete="off">
+          @csrf
               <div class="form-group">
                   <div class="">
                       <label for="name" autocomplete="off">Y:\users\hakkerman\häcks></label>

@@ -13,8 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/blockchain', [App\Http\Controllers\DesktopController::class, 'index'])->name('blockchain');
-Route::get('/blockchain', [App\Http\Controllers\DesktopController::class, 'index'])->name('blockchain');
+
+Route::get('/blockchain', [App\Http\Controllers\DesktopController::class, 'view']);
+
+Route::get('/blockchain/check', [App\Http\Controllers\DesktopController::class, 'checkData']);
+
+Route::post('/blockchain', [App\Http\Controllers\DesktopController::class, 'store'])->name('blockchain.store');
+
+
+
 Route::get('/', function () {
     return view('welcome');
 });

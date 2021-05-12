@@ -87,7 +87,7 @@ abstract class ChainedImmutableModel extends Model
      */
     public static function validateData()
     {
-        $records = DB::table("blockchain")
+        $records = DB::table("log")
             ->orderBy("id", 'asc')
             ->get();
         $previous = null;
