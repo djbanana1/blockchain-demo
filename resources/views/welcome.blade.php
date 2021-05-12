@@ -21,6 +21,8 @@
                 font-family: 'Nunito', sans-serif;
             }
         </style>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
     <body class="desktop-body">
       <div class="background-img"></div>
@@ -30,7 +32,7 @@
           Terminal
           <div class="close" onclick="closeWindow('terminal')">x</div>
         </div>
-        <div class="terminal-body">
+        <div class="terminal-body" id="terminalBody">
           <form action="{{route('blockchain.store')}}" method="POST" autocomplete="off">
           @csrf
               <div class="form-group">
@@ -134,4 +136,8 @@ dragElement(document.getElementById("txt"));
     element.classList.remove("transparent");
     element.classList.add("show");
   }
+
+  $('#terminalBody').click(function() {
+    $('#name').focus();;
+});
 </script>
