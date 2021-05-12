@@ -27,7 +27,7 @@
     <body class="desktop-body">
       <div class="background-img"></div>
 
-      <div class="terminal-container" id="terminal">
+      <div class="terminal-container" id="terminal" onclick="setHighestLayer('terminal')">
         <div class="terminal-header" id="terminalHeader">
           Terminal
           <div class="close" onclick="closeWindow('terminal')">x</div>
@@ -50,7 +50,7 @@
         </div>
       </div>
 
-      <div class="txt-container transparent" id="txt">
+      <div class="txt-container transparent" id="txt" onclick="setHighestLayer('txt')">
         <div class="txt-header" id="txtHeader">
           Terminal
           <div class="close" onclick="closeWindow('txt')">x</div>
@@ -139,5 +139,20 @@ dragElement(document.getElementById("txt"));
 
   $('#terminalBody').click(function() {
     $('#name').focus();;
-});
+  });
+
+  function setHighestLayer(elementId) {
+    if (elementId == 'terminal') {
+      let element = document.getElementById(elementId);
+      let elementTxt = document.getElementById('txt');
+      element.style.zIndex = 1000
+      elementTxt.style.zIndex = 999
+    } else {
+      let element = document.getElementById(elementId);
+      let elementTerminal = document.getElementById('terminal');
+      element.style.zIndex = 1000
+      elementTerminal.style.zIndex = 999
+    }
+
+  }
 </script>
