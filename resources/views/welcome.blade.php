@@ -52,13 +52,23 @@
 
       <div class="txt-container transparent" id="txt" onclick="setHighestLayer('txt')">
         <div class="txt-header" id="txtHeader">
-          Terminal
+          commands.log
           <div class="close" onclick="closeWindow('txt')">x</div>
         </div>
         <div class="txt-body">
           <p>asdfasfasfdasfasfasfasfa</p>
           <p>asdfasfasfdasfasfasfasfa</p>
           <p>asdfasfasfdasfasfasfasfa</p>
+        </div>
+      </div>
+
+      <div class="popup-container transparent" id="popup" onclick="setHighestLayer('terminal')">
+        <div class="popup-header" id="popupHeader">
+          Blockchain Check
+          <div class="close" onclick="closeWindow('popup')">x</div>
+        </div>
+        <div class="popup-body">
+
         </div>
       </div>
 
@@ -75,6 +85,9 @@
         <div class="taskbar-icon clickable" onclick="openWindow('terminal')">
           <img class="icon" src="assets/images/terminal.png" alt="">
         </div>
+        <div class="taskbar-icon clickable" onclick="openWindow('popup')">
+          <img class="icon" src="assets/images/check.png" alt="">
+        </div>
         <!-- <div class="check"></div> -->
       </div>
     </body>
@@ -83,6 +96,7 @@
 <script>
 dragElement(document.getElementById("terminal"));
 dragElement(document.getElementById("txt"));
+dragElement(document.getElementById("popup"));
 
   function dragElement(elmnt) {
     var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
