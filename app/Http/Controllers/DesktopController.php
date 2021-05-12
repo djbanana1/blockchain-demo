@@ -45,6 +45,12 @@ class DesktopController extends Controller
         foreach ($messages as $message) {
             $file_content .= '<p>'.$message->message.'</p>';
         }
-        return view('welcome', ['messages' => $file_content]);
+        if (ImmutableMessage::validateData()) {
+            $check = '<h2 class="success">Data is save!</h2>';
+        }
+        else {
+            $check = '<h2 class="error">Data is corrupted!</h2>';
+        }
+        return view('welcome', ['messages' => $file_content, 'check' => $check]);
     }
 }

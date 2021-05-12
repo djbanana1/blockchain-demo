@@ -103,7 +103,8 @@ abstract class ChainedImmutableModel extends Model
         //Recalculating
         foreach ($records as $record) {
             if ($record->hash && $record->hash !== static::getRecordHash((array)$record)) {
-                throw new \Exception(ChainedImmutableModel::E_INVALID_DATA2);
+                //throw new \Exception(ChainedImmutableModel::E_INVALID_DATA2);
+                return false;
             }
         }
 
