@@ -56,9 +56,7 @@
           <div class="close" onclick="closeWindow('txt')">x</div>
         </div>
         <div class="txt-body">
-          <p>asdfasfasfdasfasfasfasfa</p>
-          <p>asdfasfasfdasfasfasfasfa</p>
-          <p>asdfasfasfdasfasfasfasfa</p>
+          {!! $messages !!}
         </div>
       </div>
 
