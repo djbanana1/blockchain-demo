@@ -97,6 +97,34 @@ p {
     margin: 0 4px;
 }
 
+/*popup*/
+.popup-container {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    width: 300px;
+    height: 200px;
+    border: solid 1px #c0c0c0;
+    background-color: white;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 9999999;
+    transform: translate(0, -50%);
+    opacity: 1;
+}
+
+.popup-header {
+    position: relative;
+    width: 100%;
+    color: black;
+    background-color: #c0c0c0;
+    text-align: center;
+    cursor: move;
+}
+
+.popup-body {
+    color: black;
+}
+
 /* Folder */
 .folder-container {
     display: flex;
