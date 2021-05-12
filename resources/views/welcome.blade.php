@@ -6,6 +6,8 @@
 
         <title>Laravel</title>
 
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
+
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
@@ -20,19 +22,115 @@
             }
         </style>
     </head>
-    <body class="antialiased">
-    <form action="{{route('blockchain')}}" method="POST">
-        <div class="form-group">
-            <div class="col-sm-4">
-                <label for="name">{{__('message')}}:</label>
-                <input class="form-control" type="text" name="name" id="name" value="">
-            </div>
+    <body class="desktop-body">
+      <div class="background-img"></div>
+
+      <div class="terminal-container" id="terminal">
+        <div class="terminal-header" id="terminalHeader">
+          Terminal
+          <div class="close" onclick="closeWindow('terminal')">x</div>
         </div>
-        <div class="form-group">
-            <div class="col-sm-4 text-right">
-                <input type="submit" id="submit" value="Speichern" class="btn btn-primary">
-            </div>
+        <div class="terminal-body">
+          <form action="{{route('blockchain')}}" method="POST" autocomplete="off">
+              <div class="form-group">
+                  <div class="">
+                      <label for="name" autocomplete="off">Y:\users\hakkerman\häcks></label>
+                      <input class="form-control terminal-input" type="text" name="name" id="name" value="">
+                  </div>
+              </div>
+              <div class="form-group" style="display:none">
+                  <div class="">
+                      <input type="submit" id="submit" value="Speichern" class="btn btn-primary">
+                  </div>
+              </div>
+          </form>
         </div>
-    </form>
+      </div>
+
+      <div class="txt-container transparent" id="txt">
+        <div class="txt-header" id="txtHeader">
+          Terminal
+          <div class="close" onclick="closeWindow('txt')">x</div>
+        </div>
+        <div class="txt-body">
+          <p>asdfasfasfdasfasfasfasfa</p>
+          <p>asdfasfasfdasfasfasfasfa</p>
+          <p>asdfasfasfdasfasfasfasfa</p>
+        </div>
+      </div>
+
+
+      <div class="folder-container clickable" onclick="openWindow('txt')">
+        <img class="folder-img" src="assets/images/log.png" alt="terminal">
+        <div class="folder-description">commands.log</div>
+      </div>
+
+      <div class="taskbar-container">
+        <div class="taskbar-icon">
+          <img class="icon" src="assets/images/anonymous-mask.png" alt="">
+        </div>
+        <div class="taskbar-icon clickable" onclick="openWindow('terminal')">
+          <img class="icon" src="assets/images/terminal.png" alt="">
+        </div>
+        <!-- <div class="check"></div> -->
+      </div>
     </body>
 </html>
+
+<script>
+dragElement(document.getElementById("terminal"));
+dragElement(document.getElementById("txt"));
+
+  function dragElement(elmnt) {
+    var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+    if (document.getElementById(elmnt.id + "Header")) {
+      // if present, the header is where you move the DIV from:
+      document.getElementById(elmnt.id + "Header").onmousedown = dragMouseDown;
+    } else {
+      // otherwise, move the DIV from anywhere inside the DIV:
+      elmnt.onmousedown = dragMouseDown;
+    }
+
+    function dragMouseDown(e) {
+      e = e || window.event;
+      e.preventDefault();
+      // get the mouse cursor position at startup:
+      pos3 = e.clientX;
+      pos4 = e.clientY;
+      document.onmouseup = closeDragElement;
+      // call a function whenever the cursor moves:
+      document.onmousemove = elementDrag;
+    }
+
+    function elementDrag(e) {
+      e = e || window.event;
+      e.preventDefault();
+      // calculate the new cursor position:
+      pos1 = pos3 - e.clientX;
+      pos2 = pos4 - e.clientY;
+      pos3 = e.clientX;
+      pos4 = e.clientY;
+      // set the element's new position:
+      elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+      elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+    }
+
+    function closeDragElement() {
+      // stop moving when mouse button is released:
+      document.onmouseup = null;
+      document.onmousemove = null;
+    }
+  }
+
+  function closeWindow(elementId) {
+    let element = document.getElementById(elementId);
+    element.classList.remove("show");
+    element.classList.add("transparent");
+  }
+
+  function openWindow(elementId) {
+    let element = document.getElementById(elementId);
+    element.classList.remove("transparent");
+    element.classList.add("show");
+  }
+</script>
