@@ -66,7 +66,7 @@
           <div class="close" onclick="closeWindow('popup')">x</div>
         </div>
         <div class="popup-body">
-            {!! $check !!}
+            <b>{!! $check !!}</b>
         </div>
       </div>
 
